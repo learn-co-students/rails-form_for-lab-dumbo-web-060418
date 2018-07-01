@@ -46,3 +46,100 @@ Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms)
   [1m[35mSQL (0.6ms)[0m  DELETE FROM "students" WHERE "students"."id" = ?  [["id", 2]]
   [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
   [1m[35mStudent Load (0.2ms)[0m  SELECT "students".* FROM "students"
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateSchoolClasses (2)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "school_classes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "room_number" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "2"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for ::1 at 2018-07-01 17:59:19 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/indirawilliams/.rvm/gems/ruby-2.3.3/gems/railties-4.2.10/lib/rails/templates/rails/welcome/index.html.erb (3.7ms)
+Completed 200 OK in 38ms (Views: 24.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/school_classes/new" for ::1 at 2018-07-01 17:59:33 -0400
+Processing by SchoolClassesController#new as HTML
+  Rendered school_classes/new.html.erb within layouts/application (47.1ms)
+Completed 200 OK in 541ms (Views: 533.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/school_classes" for ::1 at 2018-07-01 18:00:01 -0400
+Processing by SchoolClassesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hQfnqRxHh6NzXbarjDH9zxtdcqHV4XyigCcQOIkrLkCT2rSV7Tmkxsr7vTXqEZqdxoxFjEHkIlPXfUvY063sqg==", "school_class"=>{"title"=>"biology", "room_number"=>"204"}, "commit"=>"Create School class"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "school_classes" ("title", "room_number", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "biology"], ["room_number", 204], ["created_at", "2018-07-01 22:00:01.936381"], ["updated_at", "2018-07-01 22:00:01.936381"]]
+  [1m[35m (2.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/school_classes/1
+Completed 302 Found in 7ms (ActiveRecord: 3.0ms)
+
+
+Started GET "/school_classes/1" for ::1 at 2018-07-01 18:00:01 -0400
+Processing by SchoolClassesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSchoolClass Load (0.3ms)[0m  [1mSELECT  "school_classes".* FROM "school_classes" WHERE "school_classes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered school_classes/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 44ms (Views: 28.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/school_classes/1" for ::1 at 2018-07-01 18:01:27 -0400
+Processing by SchoolClassesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSchoolClass Load (0.2ms)[0m  SELECT  "school_classes".* FROM "school_classes" WHERE "school_classes"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered school_classes/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 62ms (Views: 59.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/school_classes" for ::1 at 2018-07-01 18:01:56 -0400
+Processing by SchoolClassesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hQfnqRxHh6NzXbarjDH9zxtdcqHV4XyigCcQOIkrLkCT2rSV7Tmkxsr7vTXqEZqdxoxFjEHkIlPXfUvY063sqg==", "school_class"=>{"title"=>"biology", "room_number"=>"204"}, "commit"=>"Create School class"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "school_classes" ("title", "room_number", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "biology"], ["room_number", 204], ["created_at", "2018-07-01 22:01:56.716088"], ["updated_at", "2018-07-01 22:01:56.716088"]]
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/school_classes/2
+Completed 302 Found in 6ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/school_classes/2" for ::1 at 2018-07-01 18:01:56 -0400
+Processing by SchoolClassesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSchoolClass Load (0.1ms)[0m  SELECT  "school_classes".* FROM "school_classes" WHERE "school_classes"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered school_classes/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 31ms (Views: 29.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/school_classes/new" for ::1 at 2018-07-01 18:08:27 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SchoolClassesController#new as HTML
+  Rendered school_classes/new.html.erb within layouts/application (49.3ms)
+Completed 200 OK in 389ms (Views: 365.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/school_classes" for ::1 at 2018-07-01 18:08:35 -0400
+Processing by SchoolClassesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pJj2fS5YEATETxuPu2pqIpsORCblb5rIu1pbzr9MeueyRaVB3yYzYX3pEBHdSg1wRt9zC3FqxDnsAAAu5cq4DQ==", "school_class"=>{"title"=>"biology", "room_number"=>"300"}, "commit"=>"Create School class"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "school_classes" ("title", "room_number", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "biology"], ["room_number", 300], ["created_at", "2018-07-01 22:08:35.266138"], ["updated_at", "2018-07-01 22:08:35.266138"]]
+  [1m[35m (1.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/school_classes/3
+Completed 302 Found in 9ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/school_classes/3" for ::1 at 2018-07-01 18:08:35 -0400
+Processing by SchoolClassesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSchoolClass Load (0.3ms)[0m  [1mSELECT  "school_classes".* FROM "school_classes" WHERE "school_classes"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered school_classes/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 39ms (Views: 26.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/school_classes/3" for ::1 at 2018-07-01 18:13:31 -0400
+Processing by SchoolClassesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mSchoolClass Load (0.1ms)[0m  SELECT  "school_classes".* FROM "school_classes" WHERE "school_classes"."id" = ? LIMIT 1  [["id", 3]]
+  Rendered school_classes/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 38ms (Views: 30.2ms | ActiveRecord: 0.9ms)
